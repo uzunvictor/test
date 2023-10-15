@@ -1,5 +1,5 @@
 <template lang="pug">
-.products-grid
+.products-grid(v-if="products.length")
   ProductCard(
     v-for="product in products"
     :key="product.id"
@@ -20,7 +20,7 @@ import {useStoreProducts} from "@/stores/products";
 const { products } = storeToRefs(useStoreProducts())
 
 // ------------------- calls --------------------------->
-await useStoreProducts().refreshProducts()
+await useStoreProducts().fetchProducts()
 
 // ------------------- components ---------------------->
 const ProductCard = defineAsyncComponent(() => import('@/shared/components/ProductCard.vue'))
@@ -28,12 +28,15 @@ const ProductCard = defineAsyncComponent(() => import('@/shared/components/Produ
 
 <style lang="scss" scoped>
 .products-grid {
+  min-height: 100%;
   background-color: $white;
   padding: 32px;
-  height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
+  justify-content: center;
+  animation: fade 0.3s ease-in-out;
+
 }
 </style>
