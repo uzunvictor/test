@@ -13,6 +13,9 @@ export const useStoreProducts = defineStore('products', () => {
   const products = computed(() => ref_products.value)
 
   // ------------------- functions ----------------------->
+  async function fetchProducts() {
+    return products.value.length ? products.value : await refreshProducts()
+  }
   async function refreshProducts() {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000))
@@ -97,6 +100,7 @@ export const useStoreProducts = defineStore('products', () => {
   }
 
   return {
+    fetchProducts,
     refreshProducts,
     products,
   }
