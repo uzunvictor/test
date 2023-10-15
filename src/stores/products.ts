@@ -2,7 +2,7 @@ import {computed, ref} from "vue"
 import {defineStore} from "pinia"
 import {Image} from "@/shared/constants/image"
 import {Color} from "@/shared/constants/color"
-import type {Product} from "@/shared/types/product"
+import type {Product} from "@/shared/types/products"
 
 export const useStoreProducts = defineStore('products', () => {
 
