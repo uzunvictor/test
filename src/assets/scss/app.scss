@@ -10,9 +10,13 @@ html {
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
   background-color: $app_bg;
   padding: 48px;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
 
   /* Hide scrollbar for IE, Edge and Firefox */
@@ -31,7 +35,6 @@ body {
 #app {
   width: 100%;
   min-height: 100%;
-  border-radius: 24px;
 
   @media (max-width: 767.99px) {
     border-radius: 0;
