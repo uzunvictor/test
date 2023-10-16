@@ -6,14 +6,22 @@ export const useStoreHeader = defineStore("header", () => {
 
   // ------------------- state --------------------------->
   const activeTab = ref<Tab>("Products")
+  const isDesktop = ref(window.innerWidth > 1439.99)
+
 
   // ------------------- functions ----------------------->
   function setActiveTab(tab: Tab) {
-    activeTab.value = tab
+    if(window.innerWidth > 1439.99) activeTab.value = "Products"
+    else activeTab.value = tab
+  }
+  function setIsDesktop() {
+    isDesktop.value = window.innerWidth > 1439.99
   }
 
   return {
     activeTab,
+    isDesktop,
     setActiveTab,
+    setIsDesktop,
   }
 })
