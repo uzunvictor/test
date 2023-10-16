@@ -2,10 +2,10 @@
 .header
   .header__tabs
     .header__tab(@click="setActiveTab('Products')")
-      .tab__content.header__tab-left(:class="{active: activeTab === 'Products'}")
+      .tab__content.header__tab-left(:class="{active: activeTab === 'Products' && !isDesktop}")
         span Products
     .header__tab(@click="setActiveTab('Feedback')")
-      .tab__content.header__tab-right(:class="{active: activeTab === 'Feedback'}")
+      .tab__content.header__tab-right(:class="{active: activeTab === 'Feedback' && !isDesktop}")
         span Feedback
 </template>
 
@@ -14,7 +14,7 @@ import {storeToRefs} from "pinia";
 import {useStoreHeader} from "@/stores/header";
 
 // ------------------- state --------------------------->
-const { activeTab } = storeToRefs(useStoreHeader())
+const { activeTab, isDesktop } = storeToRefs(useStoreHeader())
 
 // ------------------- functions ----------------------->
 const { setActiveTab } = useStoreHeader()
@@ -33,7 +33,6 @@ const { setActiveTab } = useStoreHeader()
   }
 
   &__tab {
-    cursor: pointer;
     display: flex;
     background-color: $white;
 
@@ -61,6 +60,14 @@ const { setActiveTab } = useStoreHeader()
             letter-spacing: 1px;
           }
         }
+        &:hover:not(.active), &:focus:not(.active) {
+          span {
+            color: $text_blue_light;
+            text-decoration: dashed underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 2px;
+          }
+        }
       }
     }
 
@@ -72,6 +79,7 @@ const { setActiveTab } = useStoreHeader()
     }
 
     @media (max-width: 1439.99px) {
+      cursor: pointer;
       flex-grow: 1;
       &-left {
         border-radius: 0 0 16px 0;
@@ -85,11 +93,26 @@ const { setActiveTab } = useStoreHeader()
 
 @media (min-width: 1440px) {
   .header__tab {
+    .tab__content{
+      span {
+        color: $black;
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 1px;
+      }
+    }
     .tab__content.header__tab-right {
-      width: 350px;
+      width: 352px;
+      background-color: $smoke_grey_light;
     }
     &:has(.tab__content.header__tab-left) {
       flex: 1;
+      .tab__content {
+        background-color: $white;
+      }
     }
   }
 }
