@@ -28,15 +28,19 @@ const ProductCard = defineAsyncComponent(() => import('@/shared/components/Produ
 
 <style lang="scss" scoped>
 .products-grid {
+  align-self: flex-start;
   min-height: 100%;
   background-color: $white;
   padding: 32px;
-  width: 100%;
   display: flex;
+  width: calc(100% - 352px);
   flex-wrap: wrap;
   gap: 32px;
   justify-content: center;
   animation: fade 0.3s ease-in-out;
 
+  @media (max-width: 1439.99px) {
+    width: 100%;
+  }
 }
 </style>
