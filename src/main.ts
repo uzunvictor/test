@@ -1,5 +1,5 @@
 import './assets/scss/app.scss'
-import {mask} from 'vue-the-mask/'
+import {mask} from 'vue-the-mask'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
