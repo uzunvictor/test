@@ -60,12 +60,14 @@ const { setActiveTab } = useStoreHeader()
             letter-spacing: 1px;
           }
         }
-        &:hover:not(.active), &:focus:not(.active) {
-          span {
-            color: $text_blue_light;
-            text-decoration: dashed underline;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
+        @media (max-width: 1439.99px) {
+          &:hover:not(.active), &:focus:not(.active) {
+            span {
+              color: $text_blue_light;
+              text-decoration: dashed underline;
+              text-underline-offset: 4px;
+              text-decoration-thickness: 2px;
+            }
           }
         }
       }
