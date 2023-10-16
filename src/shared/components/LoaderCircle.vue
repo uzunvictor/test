@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import {computed} from "vue";
-import {Color} from "@/shared/constants/color.ts";
+import {Color} from "@/shared/constants/color";
 
 // ------------------- props --------------------------->
 interface Props {
@@ -26,8 +26,6 @@ const loaderSize  = computed(() => !!props.size? `${props.size}px` : '48px')
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
   flex-grow: 1;
   animation: fade 0.3s ease-in-out;
 }
